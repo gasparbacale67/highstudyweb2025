@@ -1,1 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIGH STUDY CONSULTING — Cabinet de consultance</title>
+<link rel="icon" href="iconos/gaviscon1.png" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary: #212121; /* negro → base */
+  --accent: #ffd700;  /* dorado → destaque */
+  --secondary: #0b63d6; /* azul → apoyo */
+  --bg: #F9F9F9;
+  --radius: 16px;
+  --shadow: 0 6px 18px rgba(18,38,63,0.08);
+}
 
+/* Reset y body */
+* { box-sizing: border-box; margin:0; padding:0;}
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: #0f1724;
+  line-height: 1.5;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+a { text-decoration: none; color: inherit; }
+.site { max-width: 100%; margin:0 auto; padding: 0; }
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.brand { display:flex; align-items:center; gap:20px; }
+.logo { width:64px; height:64px; border-radius:12px; overflow:hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.2);}
+.logo img { width:100%; height:100%; object-fit:cover; }
+.brand strong { font-size:26px; font-weight:900; text-transform:uppercase; letter-spacing:1.5px; color:white; text-shadow:2px 2px 6px rgba(0,0,0,0.4); }
+.brand span { font-size:14px; color: rgba(255,255,255,0.9); line-height:1.5; }
+.social-header { display:flex; gap:10px; font-size:20px; }
+.social-header a { transition:0.3s;}
+.social-header a:hover { opacity:0.8; }
+.social-header a.instagram { color:#E4405F; }
+.social-header a.facebook { color:#1877F2; }
+.social-header a.twitter { color:#1DA1F2; }
+.social-header a.whatsapp { color:#25D366; }
+
+nav a {
+  padding:10px 14px;
+  border-radius:8px;
+  font-weight:600;
+  color: rgba(255,255,255,0.9);
+  margin-right:8px;
+  transition: all 0.3s;
+  touch-action: manipulation; /* mejora táctil */
+}
+
+/* ESTO VA DESPUÉS */
+nav a:hover {
+  background: var(--secondary);
+  color: white;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--primary);
+  padding:10px 20px;
+  border-radius:12px;
+  font-weight:700;
+  transition: all 0.3s;
+}
+.btn-primary:hover { background:#ffc107; }
+
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 120vh;
+  overflow: hidden;
+  min-height: 115vh; /* previene hero demasiado pequeño */
+  max-height: 100vh; /* previene hero demasiado grande */
+}
+.hero-img {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition: opacity 1s ease-in-out;
+}
+.hero-card.overlay {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  background:#212121bd;
+  padding: 40px;
+  border-radius: var(--radius);
+  max-width: 700px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  color: #ffffff;
+}
+.hero-card.overlay h1 { margin-bottom:15px; font-size:36px; text-align:center; }
+.hero-card.overlay p { font-size:16px; }
+
+/* SECCIONES */
+section { margin:80px 40px; }
+
+/* A PROPOS */
+#apropos {
+  background: var(--primary); 
+  padding:80px 40px; 
+  border-radius:16px;
+}
+#apropos h2.titre-centre {
+  text-align:center;
+  color: var(--accent);
+  font-size:28px;
+  margin-bottom:15px;
+}
+#apropos h2:not(.titre-centre) {
+  text-align:left;
+  color: var(--accent);
+  font-size:28px;
+  margin-bottom:15px;
+}
+#apropos p,
+#apropos ul,
+#apropos li {
+  text-align:left;
+  font-size:16px;
+  color:white;
+  margin-bottom:10px;
+  line-height:1.5;
+}
+
+/* FORMULARIO */
+.card-small {
+  background: linear-gradient(135deg,#212121,#212121);
+  color:white;
+  padding:30px;
+  border-radius: var(--radius);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+.card-small h3 { color: var(--accent); margin-bottom:20px; text-align:center; font-size:28px; }
+.card-small form { display:flex; flex-direction:column; gap:10px; }
+.card-small form input, .card-small form textarea {
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  width:100%;
+  font-size:16px;
+}
+.card-small form input[type="submit"] {
+  background:var(--accent);
+  color: var(--primary);
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s;
+  font-size:16px;
+}
+.card-small form input[type="submit"]:hover { background:#ffc107; }
+
+/* DOMAINES D'INTERVENTION */
+#services { background: var(--primary); padding:40px; border-radius:16px; text-align:center; }
+#services h2 { color: var(--accent); font-size:28px; margin-bottom:40px; }
+.services-big{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.service-box{
+  flex:1;
+  min-width:300px;
+  max-width:420px;
+  background:#212121;
+  color:white;
+  border-radius:16px;
+  padding:20px;
+  text-align:center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* reemplaza la antigua */
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+.service-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.service-box img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+.service-box h3{ color: var(--accent); margin-bottom:15px; font-size:18px; }
+.service-box p{ font-size:16px; }
+.service-box:hover{
+  transform: translateY(-10px);
+  background: var(--secondary);}
+
+/* NOTRE ÉQUIPE */
+#equipe { background: var(--primary); padding:40px 0; text-align:center; }
+#equipe h2 { color: var(--accent); font-size:28px; margin-bottom:40px; }
+.team-big-full{
+  display:flex;
+  justify-content:center;
+  width:100%;
+  flex-wrap:wrap;
+}
+.team-box-full{
+  width:90%;
+  max-width:1400px;
+  background:none;
+  box-shadow:none;
+  padding:0;
+  text-align:center;
+}
+.team-box-full img{ width:100%; height:auto; border-radius:12px; }
+
+/* NOS RÉFÉRENCES */
+#references { background: var(--primary); padding:40px; border-radius:16px; text-align:center; }
+#references h2 { color: var(--accent); font-size:28px; margin-bottom:40px; }
+.references-grid {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap: nowrap;
+  overflow-x:auto;
+}
+.references-grid .service {
+  flex:0 0 250px;
+  text-align:center;
+  background:#212121;
+  color:white;
+  padding:15px;
+  transition:0.3s;
+}
+.references-grid .service img {
+  width:100%;
+  height:120px;
+  object-fit:contain;
+  margin-bottom:10px;
+}
+.references-grid .service:hover { background:#1a3660; cursor:pointer; }
+
+/* CONTACT */
+#contact { background: var(--primary); padding:40px; border-radius:16px; color:white; text-align:center; }
+#contact h2 { color: var(--accent); font-size:28px; margin-bottom:40px; }
+.contact-card { background: var(--secondary); padding:24px; border-radius:16px; color:white; text-align:center; font-size:16px; }
+
+/* FOOTER */
+footer { margin-top:40px; padding:30px; text-align:center; background: var(--primary); color:white; border-radius:12px; box-shadow: var(--shadow); }
+
+/* BOTONES */
+#btn-up, #btn-down {
+  position: fixed;
+  right: 20px;
+  background: var(--primary);
+  color: white;
+  padding:12px 16px;
+  border-radius:50%;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: all 0.3s;
+}
+#btn-up:hover, #btn-down:hover { background:#0b63d6; }
+#btn-up { bottom: 80px; }
+#btn-down { bottom: 20px; }
+
+/* HOVER DE BOTONES */
+#btn-up:hover,
+#btn-down:hover {
+  background: var(--secondary);
+}
+
+/* MEDIA QUERIES */
+
+/* Tabletas y pantallas medianas */
+@media(max-width:1024px){
+  section { margin:60px 20px; }
+  nav a { margin-bottom:6px; display:inline-block; }
+  .hero-card.overlay { bottom:20px; left:20px; right:20px; max-width:none; padding:30px; }
+}
+
+/* Móviles */
+@media(max-width:768px){
+  /* HERO */
+  .hero { height: 80vh; }
+  .hero-card.overlay { padding: 20px; }
+  .hero-card.overlay h1 { font-size:28px; }
+
+  /* HEADER */
+  header { padding: 20px 15px; }
+  .brand strong { font-size:20px; }
+
+  /* MENÚ MÓVIL */
+  nav { width:100%; margin-top:15px; }
+  nav a { display:block; margin:5px 0; padding:12px 16px; }
+  nav a:last-child { margin-bottom:10px; }
+
+  /* TEAM Y REFERENCIAS */
+  .team-grid { flex-wrap: wrap; justify-content:center; gap:20px; }
+  .references-grid { flex-wrap: wrap; justify-content:center; overflow-x: visible; gap:20px; }
+
+  /* FORMULARIO */
+  .card-small { padding: 20px; }
+  .card-small form input, .card-small form textarea { font-size:14px; }
+
+  /* BOTONES FLOTANTES */
+  #btn-up, #btn-down { padding:8px 12px; font-size:16px; }
+}
+</style>
+</head>
+<body>
+<div class="site">
+<header>
+<div class="brand">
+<div class="logo"><img src="iconos/logo2.png" alt="Logo HSC"></div>
+<div>
+<strong>HIGH STUDY CONSULTING</strong><br>
+<span>Cabinet de consultance au service du Développement des Entreprises en Afrique</span>
+</div>
+</div>
+<div class="social-header">
+<a href="https://www.instagram.com/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://www.facebook.com/" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+<a href="https://twitter.com/" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+<a href="https://wa.me/221781900331" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+</div>
+<nav>
+<a href="#accueil">Accueil</a>
+<a href="#apropos">À propos</a>
+<a href="#services">Nos services</a>
+<a href="#equipe">Notre équipe</a>
+<a href="#references">Nos références</a>
+<a href="#contact">Contact</a>
+</nav>
+<a class="btn-primary" href="#inscription">S'inscrire</a>
+</header>
+
+<!-- HERO -->
+<main id="accueil" class="hero">
+<img src="imag/cisse1.jpeg" class="hero-img" style="opacity:1;">
+<img src="imag/cisse2.jpeg" class="hero-img" style="opacity:0;">
+<div class="hero-card overlay">
+<h1>HIGH STUDY CONSULTING (HSC)</h1>
+<p>Un cabinet de consultance au service du <strong>Développement des Entreprises en Afrique</strong>, spécialisé en management, RH, marketing, banque, finance et assurance.</p>
+</div>
+</main>
+
+<!-- A PROPOS -->
+<section id="apropos">
+<div class="apropos-card">
+<h2 class="titre-centre">PRESENTATION DU CABINET</h2>
+<p>High Study Consulting est un cabinet pluridisciplinaire basé à Dakar, offrant un accompagnement stratégique et opérationnel aux entreprises et organisations africaines. Notre expertise repose sur une approche personnalisée, orientée résultats et conforme aux standards internationaux.</p>
+
+<h2>Notre Démarche</h2>
+<p>Notre méthode d’intervention repose sur l’écoute, l’analyse des besoins, la co-construction de solutions adaptées et le suivi durable. Chaque projet est conduit en étroite collaboration avec nos partenaires pour garantir efficacité et impact mesurable.</p>
+
+<h2>Nos Valeurs</h2>
+<ul>
+<li>Professionnalisme et excellence</li>
+<li>Intégrité et respect des normes déontologiques</li>
+<li>Innovation et amélioration continue</li>
+<li>Engagement pour le développement durable en Afrique</li>
+</ul>
+
+<h2>Les Missions</h2>
+<ul>
+<li>Accompagner les entreprises dans leur stratégie globale</li>
+<li>Optimiser la gestion des ressources humaines et financières</li>
+<li>Développer des solutions innovantes adaptées au marché africain</li>
+<li>Former et conseiller les équipes sur les bonnes pratiques et standards internationaux</li>
+</ul>
+
+<h2>Nos Atouts</h2>
+<ul>
+<li>Une équipe multidisciplinaire hautement qualifiée</li>
+<li>Plus de 10 ans d'expérience dans l’accompagnement institutionnel</li>
+<li>Un réseau solide de partenaires académiques et professionnels</li>
+<li>Des solutions pratiques adaptées au contexte africain</li>
+</ul>
+</div>
+</section>
+
+<!-- FORMULARIO -->
+<aside id="inscription" class="card-small">  
+<h3>FICHE D'INSCRIPTION AU SÉMINAIRE DE FORMATION</h3>
+
+<form action="https://formspree.io/f/tu_codigo" method="POST">
+
+<label>Nom complet :</label>
+<input type="text" name="civilite" placeholder="Votre nom complet" required>
+
+<label>Date et lieu de naissance :</label>
+<input type="text" name="naissance" placeholder="JJ/MM/AAAA, Ville" required>
+
+<label>Adresse :</label>
+<input type="text" name="adresse" placeholder="Votre adresse complète" required>
+
+<label>Ville :</label>
+<input type="text" name="ville" placeholder="Votre ville" required>
+
+<label>Email & Téléphone :</label>
+<input type="text" name="contact" placeholder="Email et numéro" required>
+
+<label>Niveau d’études et spécialisation :</label>
+<input type="text" name="niveau" placeholder="Ex : Licence en Management" required>
+
+<label>Expériences professionnelles :</label>
+<textarea name="experiences" rows="4" placeholder="Décrivez vos expériences" required></textarea>
+
+<input type="submit" value="S'inscrire">
+
+</form>
+</aside>
+
+<!-- DOMAINES D'INTERVENTION -->
+<section id="services">
+<h2>DOMAINES D'INTERVENTION</h2>
+<div class="services-big">
+<div class="service-box">
+<img src="imag/collectivites3.jpg" alt="">
+<h3>ACCOMPAGNEMENT DES COLLECTIVITÉS TERRITORIALES</h3>
+<p>Nous accompagnons les collectivités territoriales dans la planification stratégique, la gestion des projets publics, la gouvernance locale et le développement durable.</p>
+</div>
+<div class="service-box">
+<img src="imag/entreprises4.jpg" alt="">
+<h3>ACCOMPAGNEMENT DES ENTREPRISES</h3>
+<p>Nous appuyons les entreprises dans leur structuration, stratégie, gestion financière, ressources humaines et développement commercial.</p>
+</div>
+<div class="service-box">
+<img src="imag/formation5.jpg" alt="">
+<h3>FORMATION</h3>
+<p>Organisation de séminaires, formations professionnelles et renforcement de capacités adaptées aux besoins du marché africain.</p>
+</div>
+</div>
+</section>
+
+<!-- NOTRE ÉQUIPE -->
+<section id="equipe">
+<h2>NOTRE ÉQUIPE</h2>
+<div class="team-big-full">
+<div class="team-box-full">
+<img src="imag/notre-equipe6.jpg" alt="Équipe complète">
+</div>
+</div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references">
+<h2> ILS NOUS ONT FAIT CONFIANCE</h2>
+<div class="references-grid">
+<div class="service"><img src="iconos/institut3.jpg" alt="Client 1"><span>INSTITUT SUPÉRIEUR DE FINANCE (ISF DAKAR)</span></div>
+<div class="service"><img src="iconos/media4.jpg" alt="Client 2"><span>OFFICE NATIONAL DE L'ASSAINISSEMENT DU SÉNÉGAL (ONAS)</span></div>
+<div class="service"><img src="iconos/startime5.jpg" alt="Client 3"><span>STARTIMES MEDIA SÉNÉGAL</span></div>
+<div class="service"><img src="iconos/commune6.jpg" alt="Client 4"><span>COMMUNE DES HLM DE DAKAR</span></div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>CONTACTEZ-NOUS</h2>
+<div class="contact-card">
+<p>📧Email: chtcisse@yahoo.fr</p>
+<p>📞Téléphone: +221 78 190 03 31</p>
+<p>📍Adresse: Dakar, Sénégal</p>
+<p>📋Formulaire de contact disponible dans la section d'inscription</p>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2025 HIGH STUDY CONSULTING — Tous droits réservés.</p>
+</footer>
+
+<button id="btn-up"><i class="fas fa-chevron-up"></i></button>
+<button id="btn-down"><i class="fas fa-chevron-down"></i></button>
+
+<script>
+let slides = document.querySelectorAll('.hero-img');
+let current = 0;
+setInterval(() => {
+slides[current].style.opacity = 0;
+current = (current+1)%slides.length;
+slides[current].style.opacity = 1;
+}, 4000);
+
+const btnUp = document.getElementById('btn-up');
+const btnDown = document.getElementById('btn-down');
+
+btnUp.addEventListener('click', () => {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+btnDown.addEventListener('click', () => {
+window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+});
+</script>
+</div>
+</body>
+</html>
